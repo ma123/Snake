@@ -20,6 +20,27 @@ public class Snake : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Move Left
+		if(Input.GetMouseButtonDown(0)) {
+			float partScreen = Screen.width / 3;
+
+			if ((Input.mousePosition.x > 0 && Input.mousePosition.x < partScreen) && lastHeadDirection != "RIGHT") {
+				headDirection = "LEFT";
+			}
+
+			if (((Input.mousePosition.x > (partScreen * 2)) && Input.mousePosition.x < Screen.width) && lastHeadDirection != "LEFT") {
+				headDirection = "RIGHT";
+			}
+
+			if ((Input.mousePosition.x >= partScreen) && (Input.mousePosition.x <= (partScreen * 2))) {
+				if (((Input.mousePosition.y >= 0) && (Input.mousePosition.y < (Screen.height / 2))) && lastHeadDirection != "UP") {
+					headDirection = "DOWN";
+				} else {
+					headDirection = "UP";
+				}
+			}
+		}
+
+
 		if (Input.GetKeyDown (KeyCode.LeftArrow) && lastHeadDirection != "RIGHT") 
 		{
 			headDirection = "LEFT";

@@ -9,7 +9,7 @@ public class Score : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		score = 3;
+		score = 2;
 		ScoreText.text = "Length: " + score;
 	}
 	
