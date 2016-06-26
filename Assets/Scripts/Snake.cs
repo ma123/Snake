@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour {
 	public GameObject snakeHead;
 	public GameObject tail;
 	public GameObject particle;
+	private bool oneParticle = true;
 
 	// Use this for initialization
 	void Start () {
@@ -80,8 +81,11 @@ public class Snake : MonoBehaviour {
 			}
 			moveHead ();
 		} else {
-			Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
-			Destroy (snakeHead);
+			if(oneParticle) {
+				Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
+				oneParticle = false;
+			}
+			//Destroy (snakeHead);
 			FindObjectOfType<Score> ().ScoreText.text = "GAME OVER!";
 		}
 	}
