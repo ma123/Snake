@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Snake : MonoBehaviour {
-
 	private string headDirection;
 	private string lastHeadDirection;
 	private float lastFall;
+	private Transform lastHeadTransform;
 	public List<GameObject> snakeBody;
 	public GameObject snakeHead;
 	public GameObject tail;
@@ -64,6 +64,7 @@ public class Snake : MonoBehaviour {
 		else if (Time.time - lastFall >= 0.10f) {
 			moveSnake ();
 			lastHeadDirection = headDirection;
+			lastHeadTransform = this.transform;
 			lastFall = Time.time;
 		}
 	}
@@ -120,8 +121,8 @@ public class Snake : MonoBehaviour {
 	bool isInsideArea ()
 	{
 		Vector3 head = snakeHead.transform.position;
-		if( head.x >= 1 && head.x <= 31
-		   && head.y >= -15 && head.y <= 15 ){
+		if( head.x >= -9 && head.x <= 9
+		   && head.y >= -16 && head.y <= 16 ){
 			return true;
 		}
 		else{
@@ -171,7 +172,8 @@ public class Snake : MonoBehaviour {
 
 		FindObjectOfType<Fruit> ().remove();
 		FindObjectOfType<Fruit> ().seed ();
-		FindObjectOfType<Score> ().ScoreText.text = "Length: " + ++FindObjectOfType<Score> ().score;
+		int gameScore = ++FindObjectOfType<Score> ().score;
+		FindObjectOfType<Score> ().ScoreText.text = gameScore.ToString();
 	}
 
 	bool thereIsFood ()

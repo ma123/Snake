@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
-public class Score : MonoBehaviour {
-
-	public Text ScoreText;
-	public int score;
+public class Quit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		score = 2;
-		ScoreText.text = score.ToString();
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit ();
+		}
 	}
 }
