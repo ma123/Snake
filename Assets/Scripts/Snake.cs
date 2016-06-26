@@ -6,10 +6,10 @@ public class Snake : MonoBehaviour {
 	private string headDirection;
 	private string lastHeadDirection;
 	private float lastFall;
-	private Transform lastHeadTransform;
 	public List<GameObject> snakeBody;
 	public GameObject snakeHead;
 	public GameObject tail;
+	public GameObject particle;
 
 	// Use this for initialization
 	void Start () {
@@ -21,21 +21,21 @@ public class Snake : MonoBehaviour {
 	void Update () {
 		// Move Left
 		if(Input.GetMouseButtonDown(0)) {
-			float partScreen = Screen.width / 3;
+			float partScreen = Screen.height / 3;
 
-			if ((Input.mousePosition.x > 0 && Input.mousePosition.x < partScreen) && lastHeadDirection != "RIGHT") {
-				headDirection = "LEFT";
+			if ((Input.mousePosition.y > 0 && Input.mousePosition.y < partScreen) && lastHeadDirection != "UP") {
+				headDirection = "DOWN";
 			}
 
-			if (((Input.mousePosition.x > (partScreen * 2)) && Input.mousePosition.x < Screen.width) && lastHeadDirection != "LEFT") {
-				headDirection = "RIGHT";
+			if (((Input.mousePosition.y > (partScreen * 2)) && Input.mousePosition.y < Screen.height) && lastHeadDirection != "DOWN") {
+				headDirection = "UP";
 			}
 
-			if ((Input.mousePosition.x >= partScreen) && (Input.mousePosition.x <= (partScreen * 2))) {
-				if (((Input.mousePosition.y >= 0) && (Input.mousePosition.y < (Screen.height / 2))) && lastHeadDirection != "UP") {
-					headDirection = "DOWN";
+			if ((Input.mousePosition.y >= partScreen) && (Input.mousePosition.y <= (partScreen * 2))) {
+				if (((Input.mousePosition.x >= 0) && (Input.mousePosition.x < (Screen.width / 2))) && lastHeadDirection != "RIGHT") {
+					headDirection = "LEFT";
 				} else {
-					headDirection = "UP";
+					headDirection = "RIGHT";
 				}
 			}
 		}
@@ -64,7 +64,6 @@ public class Snake : MonoBehaviour {
 		else if (Time.time - lastFall >= 0.10f) {
 			moveSnake ();
 			lastHeadDirection = headDirection;
-			lastHeadTransform = this.transform;
 			lastFall = Time.time;
 		}
 	}
@@ -81,6 +80,8 @@ public class Snake : MonoBehaviour {
 			}
 			moveHead ();
 		} else {
+			Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
+			Destroy (snakeHead);
 			FindObjectOfType<Score> ().ScoreText.text = "GAME OVER!";
 		}
 	}
