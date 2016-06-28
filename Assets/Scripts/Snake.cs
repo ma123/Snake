@@ -10,62 +10,71 @@ public class Snake : MonoBehaviour {
 	public GameObject snakeHead;
 	public GameObject tail;
 	public GameObject particle;
+	private GameObject menuManager;
 	private bool oneParticle = true;
+	private float snakeSpeed = 1000.0f;
+	private bool openMenuPanel = false;
 
 	// Use this for initialization
 	void Start () {
 		headDirection = "LEFT";
 		lastHeadDirection = "LEFT";
+		menuManager = GameObject.FindGameObjectWithTag ("MenuManager");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Move Left
-		if(Input.GetMouseButtonDown(0)) {
-			float partScreen = Screen.height / 3;
+		if(!menuManager.GetComponent<MenuManager>().menuPanel.activeSelf) {
+			if(Input.GetMouseButtonDown(0)) {
+				float partScreen = Screen.height / 3;
 
-			if ((Input.mousePosition.y > 0 && Input.mousePosition.y < partScreen) && lastHeadDirection != "UP") {
-				headDirection = "DOWN";
-			}
+				if ((Input.mousePosition.y > 0 && Input.mousePosition.y < partScreen) && lastHeadDirection != "UP") {
+					headDirection = "DOWN";
+				}
 
-			if (((Input.mousePosition.y > (partScreen * 2)) && Input.mousePosition.y < Screen.height) && lastHeadDirection != "DOWN") {
-				headDirection = "UP";
-			}
+				if (((Input.mousePosition.y > (partScreen * 2)) && Input.mousePosition.y < Screen.height) && lastHeadDirection != "DOWN") {
+					headDirection = "UP";
+				}
 
-			if ((Input.mousePosition.y >= partScreen) && (Input.mousePosition.y <= (partScreen * 2))) {
-				if (((Input.mousePosition.x >= 0) && (Input.mousePosition.x < (Screen.width / 2))) && lastHeadDirection != "RIGHT") {
-					headDirection = "LEFT";
-				} else {
-					headDirection = "RIGHT";
+				if ((Input.mousePosition.y >= partScreen) && (Input.mousePosition.y <= (partScreen * 2))) {
+					if (((Input.mousePosition.x >= 0) && (Input.mousePosition.x < (Screen.width / 2))) && lastHeadDirection != "RIGHT") {
+						headDirection = "LEFT";
+					} else {
+						headDirection = "RIGHT";
+					}
 				}
 			}
+
+			if (Input.GetKeyDown (KeyCode.LeftArrow) && lastHeadDirection != "RIGHT") 
+			{
+				headDirection = "LEFT";
+			}
+			// Move Right
+			else if (Input.GetKeyDown (KeyCode.RightArrow) && lastHeadDirection != "LEFT")
+			{
+				headDirection = "RIGHT";
+			}
+			// Move Up
+			else if (Input.GetKeyDown (KeyCode.UpArrow) && lastHeadDirection != "DOWN")
+			{
+				headDirection = "UP";
+			}
+			// Move Down
+			else if (Input.GetKeyDown (KeyCode.DownArrow) && lastHeadDirection != "UP")
+			{
+				headDirection = "DOWN";
+			}
+			// Move Snake
+			else if (Time.time >= snakeSpeed + lastFall) {
+				moveSnake ();
+				lastHeadDirection = headDirection;
+				lastFall = Time.time;
+			}
 		}
 
-
-		if (Input.GetKeyDown (KeyCode.LeftArrow) && lastHeadDirection != "RIGHT") 
-		{
-			headDirection = "LEFT";
-		}
-		// Move Right
-		else if (Input.GetKeyDown (KeyCode.RightArrow) && lastHeadDirection != "LEFT")
-		{
-			headDirection = "RIGHT";
-		}
-		// Move Up
-		else if (Input.GetKeyDown (KeyCode.UpArrow) && lastHeadDirection != "DOWN")
-		{
-			headDirection = "UP";
-		}
-		// Move Down
-		else if (Input.GetKeyDown (KeyCode.DownArrow) && lastHeadDirection != "UP")
-		{
-			headDirection = "DOWN";
-		}
-		// Move Snake
-		else if (Time.time - lastFall >= 0.10f) {
-			moveSnake ();
-			lastHeadDirection = headDirection;
-			lastFall = Time.time;
+		if(openMenuPanel) {
+			menuManager.GetComponent<MenuManager> ().EndGame ();
 		}
 	}
 
@@ -85,8 +94,9 @@ public class Snake : MonoBehaviour {
 				Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
 				oneParticle = false;
 			}
-			//Destroy (snakeHead);
-			FindObjectOfType<Score> ().ScoreText.text = "GAME OVER!";
+
+			FindObjectOfType<Score> ().ScoreText.text = "GAME OVER";
+			StartCoroutine(Wait());
 		}
 	}
 
@@ -191,5 +201,14 @@ public class Snake : MonoBehaviour {
 		else{
 			return false;
 		}
+	}
+
+	public void SetSnakeSpeed(float snakeSpeed) {
+		this.snakeSpeed = snakeSpeed;
+	}
+
+	IEnumerator Wait() { 
+		yield return new WaitForSeconds(2);
+		openMenuPanel = true;
 	}
 }
