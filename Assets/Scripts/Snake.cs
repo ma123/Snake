@@ -92,6 +92,7 @@ public class Snake : MonoBehaviour {
 		} else {
 			if(oneParticle) {
 				Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
+				Destroy (snakeHead);
 				oneParticle = false;
 			}
 
