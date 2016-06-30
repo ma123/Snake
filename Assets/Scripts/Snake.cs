@@ -92,7 +92,13 @@ public class Snake : MonoBehaviour {
 		} else {
 			if(oneParticle) {
 				Instantiate (particle, new Vector3(snakeHead.transform.position.x, snakeHead.transform.position.y, -0.2f), Quaternion.identity);
-				Destroy (snakeHead);
+				snakeHead.GetComponent<SpriteRenderer> ().enabled = false;
+
+				foreach (GameObject body in snakeBody) {
+					Instantiate (particle, new Vector3(body.transform.position.x, body.transform.position.y, -0.2f), Quaternion.identity);
+					body.GetComponent<SpriteRenderer> ().enabled = false;
+				}
+				//Destroy (snakeHead);
 				oneParticle = false;
 			}
 

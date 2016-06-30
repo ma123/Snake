@@ -7,10 +7,14 @@ public class MenuManager : MonoBehaviour {
 	public GameObject menuPanel;
 	private GameObject snakeObject;
 	private float difficultySnake;
+	private int difficulty = 2;
+	private float snakeSpeed = 0.12f;
+	public Text buttonText;
 
 	void Start() {
 		snakeObject = GameObject.FindGameObjectWithTag ("Snake");
-		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (10000.0f);
+		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (100000.0f);
+		buttonText.text = difficulty.ToString ();
 		//Time.timeScale = 0; // pauznutie hry
 		menuPanel.SetActive(true);
 	}
@@ -18,7 +22,7 @@ public class MenuManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape) && !menuPanel.activeSelf) {
-			snakeObject.GetComponent<Snake> ().SetSnakeSpeed (10000.0f);
+			snakeObject.GetComponent<Snake> ().SetSnakeSpeed (100000.0f);
 			//Time.timeScale = 0; // pauznutie hry
 			menuPanel.SetActive (true);
 		} else {
@@ -37,7 +41,7 @@ public class MenuManager : MonoBehaviour {
 	public void StartGame() {
 		print ("start");
 		menuPanel.SetActive(false);
-		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (0.10f);
+		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (snakeSpeed);
 		//Time.timeScale = 1; // start hry
 	}
 
@@ -50,7 +54,25 @@ public class MenuManager : MonoBehaviour {
 		// rating game with stars
 	}
 
-	public void DifficultyGame() {
-		// set difficulty of game
+	public void ChangeDifficulty() {
+		difficulty++;
+		if(difficulty > 3) {
+			difficulty = 1;
+		}
+
+		switch(difficulty) {
+			case 1:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.2f; 
+				break;
+			case 2:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.12f; 
+				break;
+			case 3:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.07f; 
+				break;
+		}
 	}
 }
