@@ -5,7 +5,6 @@ public class RandomColor : MonoBehaviour {
 	// paleta po 4 forbach
 	// 4 palety farieb
 	public GameObject snakeHead;
-	public GameObject snakeBody;
 	public GameObject tail;
 	public GameObject fruit;
 	public Camera camera;

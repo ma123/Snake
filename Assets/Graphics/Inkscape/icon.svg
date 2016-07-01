@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
+	 height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="svg2" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:export-ydpi="90" inkscape:export-xdpi="90" inkscape:export-filename="C:\Users\Q7W5\Programovanie\Git\Snake\Assets\Graphics\diffBtn.png" sodipodi:docname="play.svg" inkscape:version="0.91 r13725">
+	<path fill="#44F092" d="M478.052,0.947H34.947c-15.465,0-34,17.536-34,33v444.105c0,15.464,17.535,33,33,33h444.105
+		c15.463,0,33-17.536,33-33V33.947C511.052,18.483,493.515,0.947,478.052,0.947z"/>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="603.9177" y1="858.9688" x2="1114.0232" y2="858.9688" gradientTransform="matrix(-1.346898e-010 1 -1 -1.346898e-010 1114.9685 -602.9705)">
+		<stop  offset="0" style="stop-color:#44F092"/>
+		<stop  offset="0.1333" style="stop-color:#43EC90"/>
+		<stop  offset="0.2715" style="stop-color:#41DF89"/>
+		<stop  offset="0.412" style="stop-color:#3ECB7E"/>
+		<stop  offset="0.5539" style="stop-color:#3AAE6E"/>
+		<stop  offset="0.6958" style="stop-color:#34895A"/>
+		<stop  offset="0.7734" style="stop-color:#30714D"/>
+		<stop  offset="0.8428" style="stop-color:#235238"/>
+		<stop  offset="0.994" style="stop-color:#010302"/>
+		<stop  offset="1" style="stop-color:#000000"/>
+	</linearGradient>
+	<path opacity="0.35" fill="url(#SVGID_1_)" d="M511.052,477.053V33.947c0-15.464-17.537-33-33-33H34.947c-15.465,0-34,19.536-34,35
+		v441.105c0,15.464,17.535,34,33,34h444.105C493.515,511.053,511.052,492.517,511.052,477.053z"/>
+	
+		<sodipodi:namedview  units="px" showgrid="false" inkscape:cy="366.1811" inkscape:cx="-285.95276" inkscape:zoom="0.5" borderopacity="1.0" bordercolor="#666666" pagecolor="#ffffff" id="base" inkscape:window-maximized="1" inkscape:window-y="-8" inkscape:window-x="-8" inkscape:window-height="706" inkscape:window-width="1366" inkscape:pageshadow="2" inkscape:current-layer="layer5" inkscape:document-units="px" inkscape:pageopacity="0.0">
+		</sodipodi:namedview>
+	<g id="layer2" inkscape:label="play" sodipodi:insensitive="true" inkscape:groupmode="layer" display="none">
+		
+			<path id="path4140" sodipodi:arg2="3.1415927" sodipodi:arg1="2.0943951" sodipodi:r2="81.443802" sodipodi:r1="162.88762" sodipodi:cy="256.00006" sodipodi:cx="215.27881" sodipodi:sides="3" sodipodi:type="star" inkscape:transform-center-y="-0.00019043061" inkscape:transform-center-x="-40.721957" inkscape:randomized="0" inkscape:rounded="0" inkscape:flatsided="true" inkscape:export-ydpi="90" inkscape:export-xdpi="90" inkscape:export-filename="C:\Users\Q7W5\Programovanie\Git\Snake\Assets\Graphics\playBtn.png" display="inline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="28.6982" stroke-linecap="round" stroke-linejoin="round" d="
+			M133.835,397.064V114.935L378.167,256L133.835,397.064z"/>
+	</g>
+	<g id="layer3" inkscape:label="rate" sodipodi:insensitive="true" inkscape:groupmode="layer" display="none">
+		
+			<path id="path4152" sodipodi:arg2="1.4137167" sodipodi:arg1="0.78539816" sodipodi:r2="130.10765" sodipodi:r1="57.247368" sodipodi:cy="236" sodipodi:cx="276" sodipodi:sides="5" sodipodi:type="star" inkscape:transform-center-y="-22.363359" inkscape:transform-center-x="21.500115" inkscape:randomized="0" inkscape:rounded="0" inkscape:flatsided="false" display="inline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="22.8" stroke-linecap="round" stroke-linejoin="round" d="
+			M324.835,293.578l28.106,110.256l-96.555-60.195l-96.174,60.802l27.412-110.431l-87.545-72.677l113.496-8.055l42.067-105.719
+			l42.732,105.452l113.545,7.34L324.835,293.578z"/>
+	</g>
+	<g id="layer4" inkscape:label="Exit" sodipodi:insensitive="true" inkscape:groupmode="layer" display="none">
+		
+			<rect id="rect4155" x="124.993" y="124.993" display="inline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18.7859" stroke-linecap="round" stroke-linejoin="round" width="262.014" height="262.014"/>
+	</g>
+</g>
+<g id="Layer_2">
+	<rect x="63.205" y="333.125" fill="#EEE125" width="62.507" height="62.506"/>
+	<polygon fill="#FFFFFF" points="375.852,83.1 313.346,83.1 250.84,83.1 250.84,83.101 188.333,83.101 188.333,145.606 
+		188.333,208.112 188.34,208.113 188.219,208.113 188.219,270.619 250.725,270.619 313.232,270.619 313.232,333.125 
+		250.725,333.125 250.725,333.127 188.219,333.127 125.712,333.127 125.712,395.633 188.219,395.633 250.725,395.633 
+		313.232,395.633 375.738,395.633 375.738,333.125 375.738,270.619 375.738,208.112 313.232,208.112 250.746,208.112 
+		250.84,145.606 313.346,145.606 375.852,145.606 438.358,145.606 438.358,83.1 	"/>
+</g>
+</svg>

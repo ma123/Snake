@@ -14,7 +14,24 @@ public class MenuManager : MonoBehaviour {
 	void Start() {
 		snakeObject = GameObject.FindGameObjectWithTag ("Snake");
 		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (100000.0f);
-		buttonText.text = difficulty.ToString ();
+
+		difficulty = PlayerPrefs.GetInt ("difficulty",2);
+		switch(difficulty) {
+			case 1:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.2f; 
+				break;
+			case 2:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.12f; 
+				break;
+			case 3:
+				buttonText.text = difficulty.ToString ();
+				snakeSpeed = 0.07f;
+				break;
+		}
+
+
 		//Time.timeScale = 0; // pauznutie hry
 		menuPanel.SetActive(true);
 	}
@@ -64,14 +81,17 @@ public class MenuManager : MonoBehaviour {
 			case 1:
 				buttonText.text = difficulty.ToString ();
 				snakeSpeed = 0.2f; 
+				PlayerPrefs.SetInt ("difficulty", difficulty);
 				break;
 			case 2:
 				buttonText.text = difficulty.ToString ();
 				snakeSpeed = 0.12f; 
+				PlayerPrefs.SetInt ("difficulty", difficulty);
 				break;
 			case 3:
 				buttonText.text = difficulty.ToString ();
-				snakeSpeed = 0.07f; 
+				snakeSpeed = 0.07f;
+				PlayerPrefs.SetInt ("difficulty", difficulty);
 				break;
 		}
 	}
