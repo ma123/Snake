@@ -7,15 +7,16 @@ public class MenuManager : MonoBehaviour {
 	public GameObject menuPanel;
 	private GameObject snakeObject;
 	private float difficultySnake;
-	private int difficulty = 2;
+	private int difficulty = 1;
 	private float snakeSpeed = 0.12f;
 	public Text buttonText;
+	public Text scoreText;
 
 	void Start() {
 		snakeObject = GameObject.FindGameObjectWithTag ("Snake");
 		snakeObject.GetComponent<Snake> ().SetSnakeSpeed (100000.0f);
 
-		difficulty = PlayerPrefs.GetInt ("difficulty",2);
+		difficulty = PlayerPrefs.GetInt ("difficulty",1);
 		switch(difficulty) {
 			case 1:
 				buttonText.text = difficulty.ToString ();
@@ -31,9 +32,18 @@ public class MenuManager : MonoBehaviour {
 				break;
 		}
 
-
 		//Time.timeScale = 0; // pauznutie hry
 		menuPanel.SetActive(true);
+
+		int highScore;
+		if (PlayerPrefs.GetInt ("gamescore", 0) > PlayerPrefs.GetInt ("highscore", 0)) {
+			highScore = PlayerPrefs.GetInt ("gamescore", 0);
+			PlayerPrefs.SetInt ("highscore", highScore);
+			scoreText.text = highScore.ToString ();
+		} else {
+			highScore = PlayerPrefs.GetInt ("highscore", 0);
+			scoreText.text = highScore.ToString ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -42,6 +52,11 @@ public class MenuManager : MonoBehaviour {
 			snakeObject.GetComponent<Snake> ().SetSnakeSpeed (100000.0f);
 			//Time.timeScale = 0; // pauznutie hry
 			menuPanel.SetActive (true);
+			if(PlayerPrefs.GetInt("gamescore",0) > PlayerPrefs.GetInt("highscore",0)) {
+				int highScore = PlayerPrefs.GetInt("gamescore",0);
+				PlayerPrefs.SetInt ("highscore", highScore);
+				scoreText.text = highScore.ToString ();
+			}
 		} else {
 			if (Input.GetKeyDown (KeyCode.Escape) && menuPanel.activeSelf) {
 				print ("exit");
@@ -68,7 +83,7 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void RateGame() {
-		// rating game with stars
+		Application.OpenURL("https://play.google.com/store/apps/details?id=com.ag.snake");
 	}
 
 	public void ChangeDifficulty() {

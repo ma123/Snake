@@ -15,6 +15,11 @@ public class Snake : MonoBehaviour {
 	private float snakeSpeed = 1000.0f;
 	private bool openMenuPanel = false;
 
+	private Vector2 firstPressPos;
+	private Vector2 secondPressPos;
+	private Vector2 currentSwipe;
+	public AudioClip eatClips;
+
 	// Use this for initialization
 	void Start () {
 		headDirection = "LEFT";
@@ -24,49 +29,43 @@ public class Snake : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// Move Left
 		if(!menuManager.GetComponent<MenuManager>().menuPanel.activeSelf) {
 			if(Input.GetMouseButtonDown(0)) {
-				float partScreen = Screen.height / 3;
+				//save began touch 2d point
+				firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+			}
 
-				if ((Input.mousePosition.y > 0 && Input.mousePosition.y < partScreen) && lastHeadDirection != "UP") {
-					headDirection = "DOWN";
-				}
+			if(Input.GetMouseButtonUp(0)) {
+				//save ended touch 2d point
+				secondPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
 
-				if (((Input.mousePosition.y > (partScreen * 2)) && Input.mousePosition.y < Screen.height) && lastHeadDirection != "DOWN") {
+				//create vector from the two points
+				currentSwipe = new Vector2(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+
+				//normalize the 2d vector
+				currentSwipe.Normalize();
+
+				//swipe upwards
+				if(currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f && lastHeadDirection != "DOWN")
+				{
 					headDirection = "UP";
 				}
-
-				if ((Input.mousePosition.y >= partScreen) && (Input.mousePosition.y <= (partScreen * 2))) {
-					if (((Input.mousePosition.x >= 0) && (Input.mousePosition.x < (Screen.width / 2))) && lastHeadDirection != "RIGHT") {
-						headDirection = "LEFT";
-					} else {
-						headDirection = "RIGHT";
-					}
+				//swipe down
+				if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f && lastHeadDirection != "UP")
+				{
+					headDirection = "DOWN";
 				}
-			}
-
-			if (Input.GetKeyDown (KeyCode.LeftArrow) && lastHeadDirection != "RIGHT") 
-			{
-				headDirection = "LEFT";
-			}
-			// Move Right
-			else if (Input.GetKeyDown (KeyCode.RightArrow) && lastHeadDirection != "LEFT")
-			{
-				headDirection = "RIGHT";
-			}
-			// Move Up
-			else if (Input.GetKeyDown (KeyCode.UpArrow) && lastHeadDirection != "DOWN")
-			{
-				headDirection = "UP";
-			}
-			// Move Down
-			else if (Input.GetKeyDown (KeyCode.DownArrow) && lastHeadDirection != "UP")
-			{
-				headDirection = "DOWN";
-			}
-			// Move Snake
-			else if (Time.time >= snakeSpeed + lastFall) {
+				//swipe left
+				if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f && lastHeadDirection != "RIGHT")
+				{
+					headDirection = "LEFT";
+				}
+				//swipe right
+				if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f && lastHeadDirection != "LEFT")
+				{
+					headDirection = "RIGHT";
+				}
+			} else if (Time.time >= snakeSpeed + lastFall) {
 				moveSnake ();
 				lastHeadDirection = headDirection;
 				lastFall = Time.time;
@@ -98,7 +97,6 @@ public class Snake : MonoBehaviour {
 					Instantiate (particle, new Vector3(body.transform.position.x, body.transform.position.y, -0.2f), Quaternion.identity);
 					body.GetComponent<SpriteRenderer> ().enabled = false;
 				}
-				//Destroy (snakeHead);
 				oneParticle = false;
 			}
 
@@ -194,8 +192,10 @@ public class Snake : MonoBehaviour {
 
 		FindObjectOfType<Fruit> ().remove();
 		FindObjectOfType<Fruit> ().seed ();
+		AudioSource.PlayClipAtPoint (eatClips, transform.position);
 		int gameScore = ++FindObjectOfType<Score> ().score;
 		FindObjectOfType<Score> ().ScoreText.text = gameScore.ToString();
+		PlayerPrefs.SetInt ("gamescore", gameScore);
 	}
 
 	bool thereIsFood ()

@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="play.svg"
-   inkscape:export-filename="C:\Users\Q7W5\Programovanie\Git\Snake\Assets\Graphics\diffBtn.png"
+   inkscape:export-filename="C:\Users\Q7W5\Programovanie\Git\Snake\Assets\Graphics\exitBtn.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.5"
-     inkscape:cx="-285.95276"
+     inkscape:cx="-211.7451"
      inkscape:cy="366.1811"
      inkscape:document-units="px"
      inkscape:current-layer="layer5"
@@ -39,7 +39,11 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     units="px" />
+     units="px"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:object-nodes="true"
+     inkscape:object-paths="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -140,23 +144,19 @@
      inkscape:label="Vrstva 2"
      style="display:inline"
      sodipodi:insensitive="true">
-    <path
-       sodipodi:type="star"
-       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:33.99951553;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4173"
-       sodipodi:sides="5"
-       sodipodi:cx="262.14767"
-       sodipodi:cy="252.27361"
-       sodipodi:r1="154.68352"
-       sodipodi:r2="125.14159"
-       sodipodi:arg1="1.0471976"
-       sodipodi:arg2="1.6755161"
-       inkscape:flatsided="true"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="M 339.48943,386.23346 158.64419,367.22586 120.83725,189.35814 278.31651,98.437461 413.45099,220.1131 Z"
-       inkscape:transform-center-x="0.090986888"
-       inkscape:transform-center-y="-13.743589"
-       transform="matrix(0.93097734,-0.09976394,0.09976394,0.93097734,-13.130356,61.035329)" />
+    <g
+       id="g4150"
+       transform="translate(616.40193,-460.7787)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4146"
+         d="M -470.57355,826.95038 -250.2303,606.60713"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:63.4260025;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4148"
+         d="M -470.57355,606.60713 -250.2303,826.95038"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:63.4260025;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
   </g>
 </svg>
