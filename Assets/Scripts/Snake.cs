@@ -22,8 +22,8 @@ public class Snake : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		headDirection = "LEFT";
-		lastHeadDirection = "LEFT";
+		headDirection = "UP";
+		lastHeadDirection = "UP";
 		menuManager = GameObject.FindGameObjectWithTag ("MenuManager");
 	}
 	
