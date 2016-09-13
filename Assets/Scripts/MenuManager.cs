@@ -24,11 +24,11 @@ public class MenuManager : MonoBehaviour {
 				break;
 			case 2:
 				buttonText.text = difficulty.ToString ();
-				snakeSpeed = 0.12f; 
+				snakeSpeed = 0.15f; 
 				break;
 			case 3:
 				buttonText.text = difficulty.ToString ();
-				snakeSpeed = 0.07f;
+				snakeSpeed = 0.09f;
 				break;
 		}
 

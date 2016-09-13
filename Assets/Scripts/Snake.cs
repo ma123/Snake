@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,17 +15,21 @@ public class Snake : MonoBehaviour {
 	private bool oneParticle = true;
 	private float snakeSpeed = 1000.0f;
 	private bool openMenuPanel = false;
+	private GameObject adsManager;
+	public Text scoreText;
 
 	private Vector2 firstPressPos;
 	private Vector2 secondPressPos;
 	private Vector2 currentSwipe;
 	public AudioClip eatClips;
+	private int adsNumber;
 
 	// Use this for initialization
 	void Start () {
 		headDirection = "UP";
 		lastHeadDirection = "UP";
 		menuManager = GameObject.FindGameObjectWithTag ("MenuManager");
+		adsManager = GameObject.FindGameObjectWithTag ("AdsManager");
 	}
 	
 	// Update is called once per frame
@@ -98,10 +103,19 @@ public class Snake : MonoBehaviour {
 					body.GetComponent<SpriteRenderer> ().enabled = false;
 				}
 				oneParticle = false;
-			}
 
-			FindObjectOfType<Score> ().ScoreText.text = "GAME OVER";
-			StartCoroutine(Wait());
+				scoreText.text = "GAME OVER";
+				adsNumber = PlayerPrefs.GetInt ("ads", 3);
+				if (adsNumber <= 0) {
+					adsManager.GetComponent<AdManager> ().ShowInterstitial ();
+					PlayerPrefs.SetInt ("ads", 3);
+				} else {
+					adsNumber -= 1;
+					PlayerPrefs.SetInt ("ads", adsNumber--);
+				}
+
+				StartCoroutine(Wait());
+			}
 		}
 	}
 
